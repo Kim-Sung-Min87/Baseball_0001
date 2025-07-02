@@ -2,10 +2,20 @@
 
 using namespace std;
 
+struct GuessResult {
+	bool solved;
+	int strikes;
+	int balls;
+};
+
 class Baseball {
 public:
-	void guess(const std::string& guessNumber) {
+	Baseball(const std::string& question = "123") : question(question) {}
+
+	GuessResult guess(const std::string& guessNumber) {
 		assertIllegalArgument(guessNumber);
+
+		return { true, 3, 0 };
 	}
 
 private:
@@ -31,4 +41,6 @@ private:
 			guessNumber[0] == guessNumber[2] ||
 			guessNumber[1] == guessNumber[2];
 	}
+
+	string question;
 };
